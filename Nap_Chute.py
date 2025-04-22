@@ -185,7 +185,8 @@ while vManual:
     
     print("-> Đang trong quá trình nạp code, vui lòng chờ...")
     
-    kq = flash_firmware(firmware_path, xoaflash)
+    print("xoaflash = " + str(xoaflash))
+    kq = flash_firmware(firmware_path, xoaflash = xoaflash)
     
     if kq == 1:
         In_time()
@@ -222,7 +223,7 @@ while vAutomation:
                 print(Fore.MAGENTA+str_version+ Style.RESET_ALL)
                 print("-> Đang trong quá trình nạp code, vui lòng chờ...")
     
-                kq = flash_firmware(firmware_path, xoaflash)
+                kq = flash_firmware(firmware_path, xoaflash = xoaflash)
                 
                 if kq == 1:
                     In_time()
