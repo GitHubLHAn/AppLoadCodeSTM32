@@ -113,7 +113,7 @@ while vManual:
     
     print(f"-> Đang trong quá trình nạp code <{hexx}>, vui lòng chờ...")
     
-    kq = flash_firmware(firmware_path, xoaflash)
+    kq = flash_firmware(firmware_path, xoaflash = xoaflash)
     
     if kq == 1:
         In_time()
@@ -149,7 +149,7 @@ while vAutomation:
                 print("*****************************************************************************\n")
                 print(f"-> Đang trong quá trình nạp code <{hexx}>, vui lòng chờ...")
     
-                kq = flash_firmware(firmware_path, xoaflash)
+                kq = flash_firmware(firmware_path, xoaflash = xoaflash)
                 
                 if kq == 1:
                     In_time()

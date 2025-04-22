@@ -43,8 +43,9 @@ def detect_MCU_stlink_connected():
         return False, "Lỗi không xác định."
 
 
-def flash_firmware(firmware_path, port="SWD", xoaflash = 0):
+def flash_firmware(firmware_path, port="SWD", xoaflash:int = 0):
     try:      
+        
         if xoaflash == 1:        
             print("-> XÓA FLASH CŨ\n!")
             # Cấu hình lệnh CLI
