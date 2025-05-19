@@ -65,9 +65,9 @@ print("         g. Version SLAVE 3.4 (KV1)")
 print("")
 print("         h. Version SLAVE 4.0 (Kv3)")
 print("")
-print("         i. Version MASTER 4.0 (Kv3)")
+print("         i. Version MASTER 3.2 (Kv1)")
 print("")
-print("         j. Version MASTER 3.2 (Kv1)")
+print("         j. Version MASTER 4.0 (KV1 + KV3)")
 print("")
 
 str_version = ""
@@ -108,11 +108,11 @@ while i == "er":
         firmware_path = fw_slave_path_v4_0
         str_version = "=====> Nạp code mạch chute SLAVE version 4.0 (Update từ v3.4, sử dụng tại KV3)"
     # ----------------------------------------------------------------------------------------------
-    elif i == "i":
-        firmware_path = fw_master_path_v4_0
-        str_version = "=====> Nạp code mạch chute MASTER version 4.0 (Update từ v3.2, sử dụng tại KV3)"
-    # ----------------------------------------------------------------------------------------------
     elif i == "j":
+        firmware_path = fw_master_path_v4_0
+        str_version = "=====> Nạp code mạch chute MASTER version 4.0 (Update từ v3.2, sử dụng tại KV3 và update cho KV1)"
+    # ----------------------------------------------------------------------------------------------
+    elif i == "i":
         firmware_path = fw_master_path_v3_2
         str_version = "=====> Nạp code mạch chute MASTER version 3.2 (sử dụng tại KV1, set ưu tiên ngắt + tự reset)"
     # ----------------------------------------------------------------------------------------------
