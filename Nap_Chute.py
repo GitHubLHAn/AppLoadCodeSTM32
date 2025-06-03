@@ -5,6 +5,7 @@ from colorama import Fore, Style
 
 import keyboard 
 import os
+import sys
 
 from datetime import datetime
 
@@ -15,115 +16,35 @@ def In_time():
     current_time = now.strftime("%H:%M:%S")  # Giờ hiện tại (HH:MM:SS)
     print("(" + current_time +")")
     
-# path_App_Load_code_STM32 = "C:"
-
-path_App_Load_code_STM32 = os.path.dirname(os.path.abspath(__file__)) + "\\"
-
 print("\n======================================================================================")
 print("                    Chương trình nạp code cho mạch Chute (Báo máng)")
 print("======================================================================================\n")
 
-#  Đường dẫn đến thư mục chứa code
-dir_folder_code = path_App_Load_code_STM32 + "Code_Chute\\"
+path_App_Load_code_STM32 = os.path.dirname(os.path.abspath(__file__)) + "\\"
 
-# Gán đường dẫn đến các file hex
-fw_path_v2_0_yody = dir_folder_code + "\Chute_Board_v2.0.hex"
+print(Fore.YELLOW+ "> Đường dẫn hiện tại: " + path_App_Load_code_STM32 + "Code_Chute" + Style.RESET_ALL)
 
-fw_slave_path_v3_1 = dir_folder_code + "\Chute_Slave_FW_v3.1.hex"
+files = os.listdir(path_App_Load_code_STM32 + "Code_Chute\\")
 
-fw_master_test_slave = dir_folder_code + "\Chute_Master_Fw_testSlave.hex"
+print(Fore.YELLOW+ "> Những file hex hiện có:"+ Style.RESET_ALL)
 
-fw_slave_path_v3_2 = dir_folder_code + "\Chute_Slave_FW_v3.2.hex"
-
-fw_master_path_v3_1 = dir_folder_code + "\Chute_Master_FW_v3.1.hex"
-
-fw_slave_path_v3_3 = dir_folder_code + "\Chute_Slave_FW_v3.3.hex"
-
-fw_slave_path_v3_4 = dir_folder_code + "\Chute_Slave_FW_v3.4.hex"
-
-fw_slave_path_v4_0 = dir_folder_code + "\Chute_Slave_FW_v4.0.hex"
-
-fw_master_path_v4_0 = dir_folder_code + "\Chute_Master_FW_v4.0.hex"
-
-fw_master_path_v3_2 = dir_folder_code + "\Chute_Master_FW_v3.2.hex"
-
-print("> HÃY CHỌN PHIÊN BẢN NẠP:")
-print("")
-print("         a. Version 2.0 (Version Yody)")
-print("")
-print("         b. Version SLAVE 3.1 ")
-print("")
-print("         c. Code MASTER test line SLAVE")
-print("")
-print("         d. Version SLAVE 3.2")
-print("")
-print("         e. Version MASTER 3.1")
-print("")
-print("         f. Version SLAVE 3.3")
-print("")
-print("         g. Version SLAVE 3.4 (KV1)")
-print("")
-print("         h. Version SLAVE 4.0 (Kv3)")
-print("")
-print("         i. Version MASTER 3.2 (Kv1)")
-print("")
-print("         j. Version MASTER 4.0 (KV1 + KV3)")
-print("")
-
-str_version = ""
-
-i = "er"
-while i == "er":  
-    i = input("-> Nhập: ")
-    # ----------------------------------------------------------------------------------------------
-    if i == "a":
-        firmware_path = fw_path_v2_0_yody
-        str_version = "======> Nạp code version 2.0 Yody"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "b":
-        firmware_path = fw_slave_path_v3_1
-        str_version = "======> Nạp code mạch chute SLAVE version 3.1"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "c":
-        firmware_path = fw_master_test_slave
-        str_version = "======> Nạp code mạch chute MASTER test line SLAVE"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "d":
-        firmware_path = fw_slave_path_v3_2
-        str_version = "=====> Nạp code mạch chute SLAVE version 3.2 (Sửa lại chân LCD_RESET_PIN)"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "e":
-        firmware_path = fw_master_path_v3_1
-        str_version = "=====> Nạp code mạch chute MASTER version 3.1"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "f":
-        firmware_path = fw_slave_path_v3_3
-        str_version = "=====> Nạp code mạch chute SLAVE version 3.3 (Bổ sung bitmap)"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "g":
-        firmware_path = fw_slave_path_v3_4
-        str_version = "=====> Nạp code mạch chute SLAVE version 3.4 (Bỏ nhấn nút reset và bỏ calib mode), sử dụng tại KV1"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "h":
-        firmware_path = fw_slave_path_v4_0
-        str_version = "=====> Nạp code mạch chute SLAVE version 4.0 (Update từ v3.4, sử dụng tại KV3)"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "j":
-        firmware_path = fw_master_path_v4_0
-        str_version = "=====> Nạp code mạch chute MASTER version 4.0 (Update từ v3.2, sử dụng tại KV3 và update cho KV1)"
-    # ----------------------------------------------------------------------------------------------
-    elif i == "i":
-        firmware_path = fw_master_path_v3_2
-        str_version = "=====> Nạp code mạch chute MASTER version 3.2 (sử dụng tại KV1, set ưu tiên ngắt + tự reset)"
-    # ----------------------------------------------------------------------------------------------
+for ind in range (0, len(files)):
+    print("     + " + files[ind])
     
-    # ----------------------------------------------------------------------------------------------
-    else:
-        i = "er"
+if files == []:
+    print(Fore.RED+ "-> Không phát hiện file Hex! Kết thúc chương trình!"+ Style.RESET_ALL)
+    sys.exit()
+    
+#  Nhập vào tên file hex cần nạp
+hexx = input("\n> Nhập tên file hex cần nạp (Ví dụ: lehuuan.hex): ")
 
-print("")
-print(Fore.MAGENTA+str_version+ Style.RESET_ALL+ Style.RESET_ALL)
-print("")
+if hexx in files:
+    print(Fore.GREEN+ f"-> Đã tìm thấy file <{hexx}> !\n"+ Style.RESET_ALL)
+else:
+    print(Fore.RED+ f"-> Không tìm thấy file <{hexx}>, Kết thúc chương trình !!\n"+ Style.RESET_ALL)
+    sys.exit()
+
+firmware_path = path_App_Load_code_STM32 + "Code_Chute\\" + hexx
 
 # ============================================================================================
 print(Fore.YELLOW+"> Có xóa Flash cũ của vi điều khiển không?"+ Style.RESET_ALL)
@@ -165,17 +86,21 @@ while True:
 
 # ************************************************************************************************************************
 # CHƯƠNG TRÌNH NẠP THỦ CÔNG, NHẤN ENTER ĐỂ NẠP
+if vManual:
+    print(Fore.YELLOW+"\n                *********************************************    "+ Style.RESET_ALL)
+    print(Fore.YELLOW+"                *            CHẾ ĐỘ NẠP THỦ CÔNG            *    "+ Style.RESET_ALL)
+    print(Fore.YELLOW+"                *********************************************    "+ Style.RESET_ALL)
+    
 while vManual:
     print("******************************************************************************\n")
-    print(Fore.MAGENTA+str_version+ Style.RESET_ALL)
-    print(Fore.YELLOW+"> Nhấn Enter để nạp code, nhập 9 để kết thúc!"+ Style.RESET_ALL)
+    print(Fore.YELLOW+f"> Nhấn Enter để nạp code <{hexx}> , nhập 9 để kết thúc!"+ Style.RESET_ALL)
     i = "er"
     while i == "er":
         i = input("-> Nhập: ")  
         if i == "":
             print(Fore.YELLOW +"\n> Bắt đầu nạp code"+ Style.RESET_ALL)
         elif i == "9":
-            print(Fore.YELLOW +"\n->Ket Thuc Nap Code!"+ Style.RESET_ALL)
+            print(Fore.YELLOW +"\n-> Kết thúc nạp Code!"+ Style.RESET_ALL)
         else:
             print(Fore.RED +"\n> Nhập sai, hãy nhập lại\n"+ Style.RESET_ALL)
             i = "er"
@@ -183,20 +108,19 @@ while vManual:
     if i == "9":
         break
     
-    print("-> Đang trong quá trình nạp code, vui lòng chờ...")
+    print(f"-> Đang trong quá trình nạp code <{hexx}>, vui lòng chờ...")
     
-    print("xoaflash = " + str(xoaflash))
     kq = flash_firmware(firmware_path, xoaflash = xoaflash)
     
     if kq == 1:
         In_time()
                 
-        print(Fore.GREEN+"->Nạp firmware thành công!\n"+ Style.RESET_ALL)
+        print(Fore.GREEN+f"-> Nạp firmware <{hexx}> thành công!\n"+ Style.RESET_ALL)
         winsound.Beep(3000, 500)
     else:
         In_time()
         
-        print(Fore.RED+"->Nạp firmware thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
+        print(Fore.RED+f"-> Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
         winsound.Beep(1000, 1000)
 
 # # ************************************************************************************************************************
@@ -220,18 +144,17 @@ while vAutomation:
         if rs:
             if vNextTime:
                 print("*******************************************************************\n")
-                print(Fore.MAGENTA+str_version+ Style.RESET_ALL)
-                print("-> Đang trong quá trình nạp code, vui lòng chờ...")
+                print(f"-> Đang trong quá trình nạp code <{hexx}>, vui lòng chờ...")
     
                 kq = flash_firmware(firmware_path, xoaflash = xoaflash)
                 
                 if kq == 1:
                     In_time()
-                    print(Fore.GREEN+"->Nạp firmware thành công, rút ra cắm lại cho lần nạp tiếp theo!\n"+ Style.RESET_ALL)
+                    print(Fore.GREEN+f"-> Nạp firmware <{hexx}> thành công, rút ra cắm lại cho lần nạp tiếp theo!\n"+ Style.RESET_ALL)
                     winsound.Beep(3000, 500)
                 else:
                     In_time()   
-                    print(Fore.RED+"->Nạp firmware thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
+                    print(Fore.RED+f"-> Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
                     winsound.Beep(1000, 1000)
                 vNextTime = False
         else:

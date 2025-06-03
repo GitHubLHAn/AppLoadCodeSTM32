@@ -47,7 +47,7 @@ def flash_firmware(firmware_path, port="SWD", xoaflash:int = 0):
     try:      
         
         if xoaflash == 1:        
-            print("-> XÓA FLASH CŨ\n!")
+            print("-> XÓA FLASH CŨ!\n")
             # Cấu hình lệnh CLI
             command = [
                 r"D:\Program Storage\CUBE_PROG__\setup\bin\STM32_Programmer_CLI.exe",

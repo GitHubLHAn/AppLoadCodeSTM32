@@ -118,12 +118,12 @@ while vManual:
     if kq == 1:
         In_time()
                 
-        print(Fore.GREEN+f"->Nạp firmware <{hexx}> thành công!\n"+ Style.RESET_ALL)
+        print(Fore.GREEN+f"-> Nạp firmware <{hexx}> thành công!\n"+ Style.RESET_ALL)
         winsound.Beep(3000, 500)
     else:
         In_time()
         
-        print(Fore.RED+f"->Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
+        print(Fore.RED+f"-> Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
         winsound.Beep(1000, 1000)
 
 # # ************************************************************************************************************************
@@ -153,11 +153,11 @@ while vAutomation:
                 
                 if kq == 1:
                     In_time()
-                    print(Fore.GREEN+f"->Nạp firmware <{hexx}> thành công, rút ra cắm lại cho lần nạp tiếp theo!\n"+ Style.RESET_ALL)
+                    print(Fore.GREEN+f"-> Nạp firmware <{hexx}> thành công, rút ra cắm lại cho lần nạp tiếp theo!\n"+ Style.RESET_ALL)
                     winsound.Beep(3000, 500)
                 else:
                     In_time()   
-                    print(Fore.RED+f"->Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
+                    print(Fore.RED+f"-> Nạp firmware <{hexx}> thất bại, yêu cầu rút St-link cắm lại!\n"+ Style.RESET_ALL)
                     winsound.Beep(1000, 1000)
                 vNextTime = False
         else:
