@@ -1,0 +1,59 @@
+- Ứng dụng nạp code (ngày 8/6/2025)
+
+- Version: v2
+
+- Nạp code cho các mạch hệ thống báo máng.
+
+- Nạp code dùng file hex.
+            + Bổ sung giao diện nạp code bằng file hex
+
+//---------------------------------------------------------------------------------
+- Cách setup phần mềm:
+
+    1. Sau khi tải hoặc clone file zip, giải nén.
+    
+    2. Thiết lập môi trường ảo venv cho project: (không bắt buộc)
+
+        B1: Vào terminal hoặc powershell
+        B2: đi tới đường dẫn chứa folder "AppLoadCodeSTM32" bằng cách gõ 
+
+            cd + <đường dẫn đến folder>
+
+        B3: chạy lệnh:
+
+            python -m venv myenv
+
+        B4: chạy môi trường ảo, gõ:
+
+            ./myenv/Script/activate
+
+        B5: tải thư viện:
+
+            pip install -r requirements.txt
+
+//---------------------------------------------------------------------------------
+- Chạy phần mềm:
+
+    + Cách 1: chạy file .bat
+
+        Chạy file Run_NapfileHex.bat để nạp code file hex
+        Chạy file Run_NapChute.bat để nạp code cho mạch báo máng
+
+    + Cách 2:
+
+        B1: Vào terminal hoặc powershell
+        B2: đi tới đường dẫn chứa folder "AppLoadCodeSTM32" bằng cách gõ 
+
+            cd + <đường dẫn đến folder> 
+        
+        B3: chạy môi trường ảo, gõ:
+
+            ./myenv/Script/activate
+
+        B4: chạy chương trình cần chạy, gõ:
+
+            python ./Nap_fileHex.py
+
+
+
+//---------------------------------------------------------------------------------

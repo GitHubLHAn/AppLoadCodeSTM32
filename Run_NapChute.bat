@@ -17,7 +17,7 @@ if not exist "myenv\Scripts\activate.bat" (
 call myenv\Scripts\activate.bat
 
 :: Chạy script Python
-python Nap_Chute.py
+python NapChute_Terminal.py
 
 :: Giữ cửa sổ console để xem kết quả
 pause
